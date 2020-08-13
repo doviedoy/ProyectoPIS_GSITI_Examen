@@ -1,0 +1,66 @@
+-- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
+--
+-- Host: e11wl4mksauxgu1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com    Database: zkfh47neprwslko3
+-- ------------------------------------------------------
+-- Server version	5.7.23-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET @MYSQLDUMP_TEMP_LOG_BIN = @@SESSION.SQL_LOG_BIN;
+SET @@SESSION.SQL_LOG_BIN= 0;
+
+--
+-- GTID state at the beginning of the backup 
+--
+
+SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '';
+
+--
+-- Table structure for table `RolActividad`
+--
+
+DROP TABLE IF EXISTS `RolActividad`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `RolActividad` (
+  `IdRolActividad` int(11) NOT NULL AUTO_INCREMENT,
+  `IdRolProceso` int(11) NOT NULL,
+  `IdProcesoActividad` int(11) NOT NULL,
+  `Permiso` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`IdRolActividad`),
+  KEY `RolConProceso_idx` (`IdRolProceso`),
+  KEY `RolConActividad_idx` (`IdProcesoActividad`),
+  CONSTRAINT `RolAct` FOREIGN KEY (`IdProcesoActividad`) REFERENCES `ProcesoActividad` (`IdProcesoActividad`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `RolProc` FOREIGN KEY (`IdRolProceso`) REFERENCES `RolProceso` (`IdRolProceso`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `RolActividad`
+--
+
+LOCK TABLES `RolActividad` WRITE;
+/*!40000 ALTER TABLE `RolActividad` DISABLE KEYS */;
+INSERT INTO `RolActividad` VALUES (1,1,1,1),(2,1,2,1),(3,1,3,1),(4,1,4,1),(5,1,5,1),(6,1,6,1),(7,1,7,1),(8,1,8,1),(9,1,9,1),(10,2,10,1),(11,2,11,1),(12,2,12,1),(13,2,13,1),(14,2,14,1),(15,2,15,1),(16,3,16,1),(17,3,17,1),(18,3,18,1),(19,3,19,1),(20,3,20,1),(21,3,21,1),(22,4,22,1),(23,4,23,1),(24,4,24,1),(25,4,25,1),(26,5,26,1),(27,5,27,1),(28,6,28,1),(29,6,29,1),(30,7,30,1),(31,7,31,1),(32,7,32,1),(33,7,33,1),(34,7,34,1),(35,7,35,1),(36,8,36,1),(37,8,37,1),(38,8,38,1),(39,8,39,1),(40,8,40,1),(41,8,41,1),(42,9,42,1),(43,9,43,1),(44,10,44,1),(45,10,45,1),(46,10,46,1),(47,10,47,1),(48,10,48,1),(49,10,49,1),(50,11,50,1),(51,11,51,1),(52,11,52,1),(53,11,53,1),(54,11,54,1),(55,11,55,1),(56,12,56,1),(57,12,57,1),(58,12,58,1),(59,13,59,1),(60,13,60,1),(61,13,61,1),(62,13,62,1),(63,14,1,1),(64,14,2,1),(65,14,3,1),(66,14,4,1),(67,14,5,1),(68,14,6,1),(69,14,7,1),(70,14,8,1),(71,14,9,1),(72,15,10,1),(73,15,11,1),(74,15,12,1),(75,15,13,1),(76,15,14,1),(77,15,15,1),(78,16,16,1),(79,16,17,1),(80,16,18,1),(81,16,19,1),(82,16,20,1),(83,16,21,1),(84,17,22,1),(85,17,23,1),(86,17,24,1),(87,17,25,1),(88,18,26,1),(89,18,27,1),(90,19,28,1),(91,19,29,1),(92,20,30,1),(93,20,31,1),(94,20,32,1),(95,20,33,1),(96,20,34,1),(97,20,35,1),(98,21,36,1),(99,21,37,1),(100,21,38,1),(101,21,39,1),(102,21,40,1),(103,21,41,1),(104,22,42,1),(105,22,43,1),(106,23,44,1),(107,23,45,1),(108,23,46,1),(109,23,47,1),(110,23,48,1),(111,24,49,1),(112,24,50,1),(113,24,51,1),(114,24,52,1),(115,24,53,1),(116,24,54,1),(117,25,55,1),(118,25,56,1),(119,25,57,1),(120,26,58,1),(121,26,59,1),(122,26,60,1),(123,26,61,1),(124,26,62,1),(125,27,6,1),(126,28,26,1),(127,29,42,1),(128,29,43,1),(129,30,6,1),(130,31,26,1),(131,32,28,1),(132,33,10,1),(133,34,10,1),(134,35,30,1),(135,36,50,1),(136,37,36,1);
+/*!40000 ALTER TABLE `RolActividad` ENABLE KEYS */;
+UNLOCK TABLES;
+SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-08-11 17:53:29
